@@ -661,7 +661,8 @@ public class Checker extends DocTreePathScanner<Void, Void> {
     }
 
     void warnIfEmpty(TagStackItem tsi, DocTree endTree) {
-        if (tsi.tag != null && tsi.tree instanceof StartElementTree startTree) {
+        if (tsi.tag != null && tsi.tree instanceof StartElementTree) {
+            StartElementTree startTree = (StartElementTree) tsi.tree;
             if (tsi.tag.flags.contains(HtmlTag.Flag.EXPECT_CONTENT)
                     && !tsi.flags.contains(Flag.HAS_TEXT)
                     && !tsi.flags.contains(Flag.HAS_ELEMENT)
@@ -1291,8 +1292,8 @@ public class Checker extends DocTreePathScanner<Void, Void> {
     }
 
     private boolean isAnonymous() {
-        return (env.currElement instanceof TypeElement te)
-                && te.getNestingKind() == NestingKind.ANONYMOUS;
+        return (env.currElement instanceof TypeElement)
+                && ((TypeElement) env.currElement).getNestingKind() == NestingKind.ANONYMOUS;
     }
 
     private boolean isDefaultConstructor() {
@@ -1332,9 +1333,11 @@ public class Checker extends DocTreePathScanner<Void, Void> {
      * If a similar query is ever added to com.sun.source.tree, use that instead.
      */
     private boolean isImplicitlyDeclaredClass(Tree t) {
-        return t.getKind() == Tree.Kind.CLASS
-                && t instanceof com.sun.tools.javac.tree.JCTree.JCClassDecl classDecl
-                && (classDecl.mods.flags & com.sun.tools.javac.code.Flags.IMPLICIT_CLASS) != 0;
+        if (t.getKind() == Tree.Kind.CLASS && t instanceof com.sun.tools.javac.tree.JCTree.JCClassDecl) {
+            com.sun.tools.javac.tree.JCTree.JCClassDecl classDecl = (com.sun.tools.javac.tree.JCTree.JCClassDecl) t;
+            return (classDecl.mods.flags & com.sun.tools.javac.code.Flags.IMPLICIT_CLASS) != 0;
+        }
+        return false;
     }
 
     void markEnclosingTag(Flag flag) {

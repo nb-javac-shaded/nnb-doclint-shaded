@@ -379,7 +379,16 @@ public class DocLint extends com.sun.tools.doclint.DocLint {
 
     public static List<String> suggestSimilar(Collection<String> knownTags, String unknownTag) {
         final double MIN_SIMILARITY = 2.0 / 3;
-        record Pair(String tag, double similarity) { }
+        class Pair {
+            final String tag;
+            final double similarity;
+            Pair(String tag, double similarity) {
+                this.tag = tag;
+                this.similarity = similarity;
+            }
+            String tag() { return tag; }
+            double similarity() { return similarity; }
+        }
         return knownTags.stream()
                 .distinct() // filter duplicates in known, otherwise they will result in duplicates in suggested
                 .map(t -> new Pair(t, similarity(t, unknownTag)))

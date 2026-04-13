@@ -314,12 +314,16 @@ public class Env {
                 for (var entry : values.entrySet()) {
                     if (entry.getKey().getSimpleName().contentEquals("value")) {
                         AnnotationValue av = entry.getValue();
-                        if (av.getValue() instanceof List<?> list) {
+                        if (av.getValue() instanceof List<?>) {
+                            List<?> list = (List<?>) av.getValue();
                             List<String> result = new ArrayList<>();
                             for (var item : list) {
-                                if (item instanceof AnnotationValue avItem
-                                        && avItem.getValue() instanceof String s) {
-                                    result.add(s);
+                                if (item instanceof AnnotationValue) {
+                                    AnnotationValue avItem = (AnnotationValue) item;
+                                    if (avItem.getValue() instanceof String) {
+                                        String s = (String) avItem.getValue();
+                                        result.add(s);
+                                    }
                                 }
                             }
                             return result;
