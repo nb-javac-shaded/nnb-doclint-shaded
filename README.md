@@ -1,6 +1,9 @@
-# DocLint Standalone Library
+# NNB DocLint
 
-This is a standalone extraction of the DocLint utility from OpenJDK's javadoc tool.
+A standalone extraction of the DocLint utility from OpenJDK's javadoc tool.
+
+**Group ID**: `net.oxbeef`  
+**Artifact ID**: `nnb-doclint`
 
 ## What is DocLint?
 
