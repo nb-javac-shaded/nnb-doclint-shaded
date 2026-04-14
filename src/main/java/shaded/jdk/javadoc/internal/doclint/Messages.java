@@ -23,7 +23,7 @@
  * questions.
  */
 
-package jdk.javadoc.internal.doclint;
+package shaded.jdk.javadoc.internal.doclint;
 
 import java.io.PrintWriter;
 import java.text.MessageFormat;
@@ -43,7 +43,7 @@ import com.sun.source.doctree.DocTree;
 import com.sun.source.tree.Tree;
 import com.sun.tools.javac.api.JavacTrees;
 import com.sun.tools.javac.util.StringUtils;
-import jdk.javadoc.internal.tool.AccessLevel;
+import shaded.jdk.javadoc.internal.tool.AccessLevel;
 
 /**
  * Message reporting for DocLint.
@@ -82,7 +82,7 @@ public class Messages {
 
     Messages(Env env) {
         this.env = env;
-        String name = getClass().getPackage().getName() + ".resources.doclint";
+        String name = getClass().getPackage().getName() + ".doclint";
         bundle = ResourceBundle.getBundle(name, Locale.ENGLISH);
 
         stats = new Stats(bundle);

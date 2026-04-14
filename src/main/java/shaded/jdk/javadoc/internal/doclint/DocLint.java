@@ -23,7 +23,7 @@
  * questions.
  */
 
-package jdk.javadoc.internal.doclint;
+package shaded.jdk.javadoc.internal.doclint;
 
 import java.io.File;
 import java.io.IOException;
@@ -64,7 +64,7 @@ import com.sun.tools.javac.util.Context;
 import com.sun.tools.javac.util.DefinedBy;
 import com.sun.tools.javac.util.DefinedBy.Api;
 import com.sun.tools.javac.util.StringUtils.DamerauLevenshteinDistance;
-import jdk.javadoc.internal.tool.AccessLevel;
+import shaded.jdk.javadoc.internal.tool.AccessLevel;
 
 /**
  * Multi-function entry point for the doc check utility.

@@ -23,7 +23,7 @@
  * questions.
  */
 
-package jdk.javadoc.internal.html;
+package shaded.jdk.javadoc.internal.html;
 
 import java.util.HashMap;
 import java.util.Map;

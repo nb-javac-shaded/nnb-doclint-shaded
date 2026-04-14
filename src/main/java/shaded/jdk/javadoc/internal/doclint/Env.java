@@ -23,7 +23,7 @@
  * questions.
  */
 
-package jdk.javadoc.internal.doclint;
+package shaded.jdk.javadoc.internal.doclint;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -58,7 +58,7 @@ import com.sun.source.util.TreePath;
 import com.sun.tools.javac.model.JavacTypes;
 import com.sun.tools.javac.tree.JCTree;
 import com.sun.tools.javac.util.MatchingUtils;
-import jdk.javadoc.internal.tool.AccessLevel;
+import shaded.jdk.javadoc.internal.tool.AccessLevel;
 
 /**
  * Utility container for current execution environment,

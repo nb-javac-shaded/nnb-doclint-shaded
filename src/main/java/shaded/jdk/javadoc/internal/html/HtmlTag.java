@@ -23,7 +23,7 @@
  * questions.
  */
 
-package jdk.javadoc.internal.html;
+package shaded.jdk.javadoc.internal.html;
 
 import java.io.Serial;
 import java.util.EnumMap;
@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.Set;
 import javax.lang.model.element.Name;
 
-import static jdk.javadoc.internal.html.HtmlAttr.*;
+import static shaded.jdk.javadoc.internal.html.HtmlAttr.*;
 
 /**
  * Enum representing HTML tags.

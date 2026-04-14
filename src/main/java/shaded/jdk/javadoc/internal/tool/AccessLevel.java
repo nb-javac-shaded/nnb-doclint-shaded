@@ -23,7 +23,7 @@
  * questions.
  */
 
-package jdk.javadoc.internal.tool;
+package shaded.jdk.javadoc.internal.tool;
 
 import java.util.Set;
 import javax.lang.model.element.Modifier;

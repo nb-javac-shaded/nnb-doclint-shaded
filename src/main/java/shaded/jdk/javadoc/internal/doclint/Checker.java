@@ -23,7 +23,7 @@
  * questions.
  */
 
-package jdk.javadoc.internal.doclint;
+package shaded.jdk.javadoc.internal.doclint;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -101,16 +101,16 @@ import com.sun.tools.javac.util.Assert;
 import com.sun.tools.javac.util.DefinedBy;
 import com.sun.tools.javac.util.DefinedBy.Api;
 
-import jdk.javadoc.internal.html.HtmlAttr;
-import jdk.javadoc.internal.html.HtmlAttr.AttrKind;
-import jdk.javadoc.internal.html.HtmlTag;
-import jdk.javadoc.internal.html.HtmlTag.ElemKind;
+import shaded.jdk.javadoc.internal.html.HtmlAttr;
+import shaded.jdk.javadoc.internal.html.HtmlAttr.AttrKind;
+import shaded.jdk.javadoc.internal.html.HtmlTag;
+import shaded.jdk.javadoc.internal.html.HtmlTag.ElemKind;
 
-import static jdk.javadoc.internal.doclint.Messages.Group.ACCESSIBILITY;
-import static jdk.javadoc.internal.doclint.Messages.Group.HTML;
-import static jdk.javadoc.internal.doclint.Messages.Group.MISSING;
-import static jdk.javadoc.internal.doclint.Messages.Group.REFERENCE;
-import static jdk.javadoc.internal.doclint.Messages.Group.SYNTAX;
+import static shaded.jdk.javadoc.internal.doclint.Messages.Group.ACCESSIBILITY;
+import static shaded.jdk.javadoc.internal.doclint.Messages.Group.HTML;
+import static shaded.jdk.javadoc.internal.doclint.Messages.Group.MISSING;
+import static shaded.jdk.javadoc.internal.doclint.Messages.Group.REFERENCE;
+import static shaded.jdk.javadoc.internal.doclint.Messages.Group.SYNTAX;
 
 
 /**
