@@ -1,9 +1,9 @@
-# NNB DocLint
+# NNB DocLint Shaded
 
-A standalone extraction of the DocLint utility from OpenJDK's javadoc tool.
+A shaded extraction of the DocLint utility from OpenJDK's javadoc tool, with all compiler APIs relocated to `shaded.*` packages for compatibility with shaded nb-javac.
 
 **Group ID**: `net.oxbeef`  
-**Artifact ID**: `nnb-doclint`
+**Artifact ID**: `nnb-doclint-shaded`
 
 ## What is DocLint?
 
@@ -34,13 +34,15 @@ This library includes the following components from OpenJDK JDK 26:
 
 ## Dependencies
 
-This library depends on the Java Compiler API:
-- `javax.lang.model.*` - Language model API
-- `javax.tools.*` - Java tools API
-- `com.sun.source.*` - Compiler tree API
-- `com.sun.tools.javac.*` - Internal javac APIs
+This library depends on the Java Compiler API, **relocated to shaded packages**:
+- `shaded.javax.lang.model.*` - Language model API (relocated)
+- `shaded.javax.tools.*` - Java tools API (relocated)
+- `shaded.com.sun.source.*` - Compiler tree API (relocated)
+- `shaded.com.sun.tools.javac.*` - Internal javac APIs (relocated)
 
-These are available in:
+**Important**: This artifact is shaded to work with shaded nb-javac. All compiler API packages are relocated from their original locations (e.g., `com.sun.source.*`) to shaded locations (e.g., `shaded.com.sun.source.*`). This prevents ClassCastException when used with a shaded version of nb-javac.
+
+Original APIs are available in:
 - Java 8: Via `tools.jar`
 - Java 9+: Via `jdk.compiler` module
 

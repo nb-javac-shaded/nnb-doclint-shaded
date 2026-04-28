@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.oxbeef</groupId>
-    <artifactId>nnb-doclint</artifactId>
+    <artifactId>nnb-doclint-shaded</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>NNB DocLint</name>
-    <description>Standalone DocLint library extracted from OpenJDK javadoc</description>
+    <name>NNB DocLint Shaded</name>
+    <description>Shaded DocLint library for use with shaded nb-javac - all javac/source APIs relocated to shaded.* packages</description>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -47,14 +47,41 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>3.3.0</version>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.6.0</version>
                 <executions>
                     <execution>
-                        <id>attach-sources</id>
+                        <phase>package</phase>
                         <goals>
-                            <goal>jar</goal>
+                            <goal>shade</goal>
                         </goals>
+                        <configuration>
+                            <relocations>
+                                <!-- Relocate imports to match nbjavac's shading pattern -->
+                                <relocation>
+                                    <pattern>com.sun.source</pattern>
+                                    <shadedPattern>shaded.com.sun.source</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>com.sun.tools</pattern>
+                                    <shadedPattern>shaded.com.sun.tools</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.annotation.processing</pattern>
+                                    <shadedPattern>shaded.javax.annotation.processing</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.lang</pattern>
+                                    <shadedPattern>shaded.javax.lang</shadedPattern>
+                                </relocation>
+                                <relocation>
+                                    <pattern>javax.tools</pattern>
+                                    <shadedPattern>shaded.javax.tools</shadedPattern>
+                                </relocation>
+                            </relocations>
+                            <createSourcesJar>true</createSourcesJar>
+                            <shadeSourcesContent>true</shadeSourcesContent>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
