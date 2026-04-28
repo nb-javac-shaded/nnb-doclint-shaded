@@ -42,6 +42,8 @@ This library depends on the Java Compiler API, **relocated to shaded packages**:
 
 **Important**: This artifact is shaded to work with shaded nb-javac. All compiler API packages are relocated from their original locations (e.g., `com.sun.source.*`) to shaded locations (e.g., `shaded.com.sun.source.*`). This prevents ClassCastException when used with a shaded version of nb-javac.
 
+The specific shaded nb-javac implementation this library targets can be found at: https://github.com/nb-javac-shaded/nb-javac-shaded
+
 Original APIs are available in:
 - Java 8: Via `tools.jar`
 - Java 9+: Via `jdk.compiler` module
