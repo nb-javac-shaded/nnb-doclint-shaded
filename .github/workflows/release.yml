@@ -1,0 +1,59 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'jdk-*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Build with Maven
+      run: mvn -B clean package --file pom.xml
+
+    - name: Extract version from tag
+      id: version
+      run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+    - name: Create GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        name: Release ${{ steps.version.outputs.VERSION }}
+        body: |
+          ## NNB DocLint Shaded ${{ steps.version.outputs.VERSION }}
+
+          Shaded DocLint extracted from OpenJDK for use with shaded nb-javac.
+
+          ### Artifacts
+          - `nnb-doclint-shaded-${{ steps.version.outputs.VERSION }}.jar` - Main shaded JAR
+          - `nnb-doclint-shaded-${{ steps.version.outputs.VERSION }}-sources.jar` - Sources JAR
+
+          ### Maven Dependency (via JitPack)
+          ```xml
+          <dependency>
+              <groupId>com.github.nb-javac-shaded</groupId>
+              <artifactId>nnb-doclint-shaded</artifactId>
+              <version>${{ steps.version.outputs.VERSION }}</version>
+          </dependency>
+          ```
+
+          See the [README](https://github.com/nb-javac-shaded/nnb-doclint-shaded#readme) for full usage instructions.
+        files: |
+          target/nnb-doclint-shaded-*.jar
+          !target/original-*.jar
+        draft: false
+        prerelease: false
