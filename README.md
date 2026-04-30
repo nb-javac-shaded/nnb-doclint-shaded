@@ -1,5 +1,7 @@
 # NNB DocLint Shaded
 
+[![](https://jitpack.io/v/nb-javac-shaded/nnb-doclint-shaded.svg)](https://jitpack.io/#nb-javac-shaded/nnb-doclint-shaded)
+
 A shaded extraction of the DocLint utility from OpenJDK's javadoc tool, with all compiler APIs relocated to `shaded.*` packages for compatibility with shaded nb-javac.
 
 **Group ID**: `shaded.nbjavac`  
@@ -54,12 +56,23 @@ This library is designed to be used with shaded nb-javac via ServiceLoader. The 
 
 ### Maven Dependency
 
+Add the JitPack repository and dependency to your `pom.xml`:
+
 ```xml
-<dependency>
-    <groupId>shaded.nbjavac</groupId>
+<repositories>
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
+</repositories>
+
+<dependencies>
+  <dependency>
+    <groupId>com.github.nb-javac-shaded</groupId>
     <artifactId>nnb-doclint-shaded</artifactId>
     <version>jdk-26-35</version>
-</dependency>
+  </dependency>
+</dependencies>
 ```
 
 ### ServiceLoader Integration
@@ -96,6 +109,24 @@ mvn clean install
 - **Target Level**: Java 17
 
 The code has been extracted from JDK 26 and targets Java 17. Modern syntax features (switch expressions, pattern matching) are preserved.
+
+## Publishing to JitPack
+
+This project is published via JitPack:
+
+1. Create and push a tag matching the version: `git tag jdk-26-35 && git push --tags`
+2. JitPack automatically builds when someone requests the version
+3. View build status at: https://jitpack.io/#nb-javac-shaded/nnb-doclint-shaded
+
+## Updating to newer JDK versions
+
+To update to a newer JDK version:
+
+1. Extract DocLint classes from the new JDK version
+2. Update the `<version>` in `pom.xml` to match (e.g., `jdk-27-1`)
+3. Update package relocations if needed
+4. Test with the corresponding nb-javac-shaded version
+5. Tag and push to trigger a new JitPack build
 
 ## License
 
