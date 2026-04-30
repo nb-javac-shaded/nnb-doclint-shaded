@@ -2,7 +2,7 @@
 
 A shaded extraction of the DocLint utility from OpenJDK's javadoc tool, with all compiler APIs relocated to `shaded.*` packages for compatibility with shaded nb-javac.
 
-**Group ID**: `net.oxbeef`  
+**Group ID**: `shaded.nbjavac`  
 **Artifact ID**: `nnb-doclint-shaded`
 
 ## What is DocLint?
@@ -47,6 +47,29 @@ The specific shaded nb-javac implementation this library targets can be found at
 Original APIs are available in:
 - Java 8: Via `tools.jar`
 - Java 9+: Via `jdk.compiler` module
+
+## Usage
+
+This library is designed to be used with shaded nb-javac via ServiceLoader. The DocLint implementation is automatically discovered when javac loads plugins.
+
+### Maven Dependency
+
+```xml
+<dependency>
+    <groupId>shaded.nbjavac</groupId>
+    <artifactId>nnb-doclint-shaded</artifactId>
+    <version>jdk-26-35</version>
+</dependency>
+```
+
+### ServiceLoader Integration
+
+The JAR includes a service provider configuration at:
+```
+META-INF/services/shaded.com.sun.tools.doclint.DocLint
+```
+
+When shaded nb-javac is configured with `-Xdoclint` options, it automatically discovers and loads this DocLint implementation via ServiceLoader.
 
 ## Building
 
