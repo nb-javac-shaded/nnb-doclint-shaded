@@ -130,8 +130,11 @@ To update to a newer JDK version:
 
 ## License
 
-This code is extracted from OpenJDK and retains the original GPL v2 + Classpath Exception license.
-See the header in each source file for full license details.
+This code is extracted from OpenJDK and retains the original **GPL v2 with Classpath Exception**.
+
+The Classpath Exception allows you to link this library with independent modules to produce an executable, regardless of the license terms of these independent modules, without causing the resulting executable to be covered by the GNU General Public License.
+
+See the [LICENSE](LICENSE) file for the full GPL v2 license text and Classpath Exception terms. Each source file also includes the standard OpenJDK license header.
 
 ## Notes
 
