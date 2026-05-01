@@ -38,26 +38,26 @@ import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import javax.lang.model.element.AnnotationMirror;
-import javax.lang.model.element.AnnotationValue;
-import javax.lang.model.element.Element;
-import javax.lang.model.element.ElementKind;
-import javax.lang.model.element.ExecutableElement;
-import javax.lang.model.type.DeclaredType;
-import javax.lang.model.type.TypeKind;
-import javax.lang.model.type.TypeMirror;
-import javax.lang.model.util.Elements;
-import javax.lang.model.util.Types;
+import shaded.javax.lang.model.element.AnnotationMirror;
+import shaded.javax.lang.model.element.AnnotationValue;
+import shaded.javax.lang.model.element.Element;
+import shaded.javax.lang.model.element.ElementKind;
+import shaded.javax.lang.model.element.ExecutableElement;
+import shaded.javax.lang.model.type.DeclaredType;
+import shaded.javax.lang.model.type.TypeKind;
+import shaded.javax.lang.model.type.TypeMirror;
+import shaded.javax.lang.model.util.Elements;
+import shaded.javax.lang.model.util.Types;
 
-import com.sun.source.doctree.DocCommentTree;
-import com.sun.source.tree.CompilationUnitTree;
-import com.sun.source.util.DocTrees;
-import com.sun.source.util.JavacTask;
-import com.sun.source.util.SourcePositions;
-import com.sun.source.util.TreePath;
-import com.sun.tools.javac.model.JavacTypes;
-import com.sun.tools.javac.tree.JCTree;
-import com.sun.tools.javac.util.MatchingUtils;
+import shaded.com.sun.source.doctree.DocCommentTree;
+import shaded.com.sun.source.tree.CompilationUnitTree;
+import shaded.com.sun.source.util.DocTrees;
+import shaded.com.sun.source.util.JavacTask;
+import shaded.com.sun.source.util.SourcePositions;
+import shaded.com.sun.source.util.TreePath;
+import shaded.com.sun.tools.javac.model.JavacTypes;
+import shaded.com.sun.tools.javac.tree.JCTree;
+import shaded.com.sun.tools.javac.util.MatchingUtils;
 import shaded.jdk.javadoc.internal.tool.AccessLevel;
 
 /**

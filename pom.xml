@@ -16,11 +16,30 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <nbjavac.version>jdk-26-35</nbjavac.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
+
     <dependencies>
-        <!-- This will depend on tools.jar or the compiler module -->
-        <!-- For Java 11+, the compiler APIs are in java.compiler and jdk.compiler modules -->
+        <!-- Compile against shaded nb-javac -->
+        <dependency>
+            <groupId>com.github.nb-javac-shaded.nb-javac-shaded</groupId>
+            <artifactId>nb-javac-shaded</artifactId>
+            <version>${nbjavac.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.nb-javac-shaded.nb-javac-shaded</groupId>
+            <artifactId>nb-javac-api-shaded</artifactId>
+            <version>${nbjavac.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -32,17 +51,7 @@
                 <configuration>
                     <source>17</source>
                     <target>17</target>
-                    <compilerArgs>
-                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED</arg>
-                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED</arg>
-                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.file=ALL-UNNAMED</arg>
-                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.main=ALL-UNNAMED</arg>
-                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.model=ALL-UNNAMED</arg>
-                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.parser=ALL-UNNAMED</arg>
-                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.tree=ALL-UNNAMED</arg>
-                        <arg>--add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED</arg>
-                        <arg>--add-exports=jdk.compiler/com.sun.tools.doclint=ALL-UNNAMED</arg>
-                    </compilerArgs>
+                    <!-- No add-exports flags needed since we compile against shaded APIs -->
                 </configuration>
             </plugin>
             <plugin>
@@ -59,46 +68,8 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.6.0</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <relocations>
-                                <!-- Relocate imports to match nbjavac's shading pattern -->
-                                <relocation>
-                                    <pattern>com.sun.source</pattern>
-                                    <shadedPattern>shaded.com.sun.source</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>com.sun.tools</pattern>
-                                    <shadedPattern>shaded.com.sun.tools</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>javax.annotation.processing</pattern>
-                                    <shadedPattern>shaded.javax.annotation.processing</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>javax.lang</pattern>
-                                    <shadedPattern>shaded.javax.lang</shadedPattern>
-                                </relocation>
-                                <relocation>
-                                    <pattern>javax.tools</pattern>
-                                    <shadedPattern>shaded.javax.tools</shadedPattern>
-                                </relocation>
-                            </relocations>
-                            <createSourcesJar>true</createSourcesJar>
-                            <shadeSourcesContent>true</shadeSourcesContent>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+            <!-- Shade plugin removed - we use shaded imports directly in source code -->
+            <!-- No relocation needed since we import shaded.* packages natively -->
         </plugins>
     </build>
 </project>

@@ -26,7 +26,7 @@
 package shaded.jdk.javadoc.internal.tool;
 
 import java.util.Set;
-import javax.lang.model.element.Modifier;
+import shaded.javax.lang.model.element.Modifier;
 
 /**
  * The access levels.

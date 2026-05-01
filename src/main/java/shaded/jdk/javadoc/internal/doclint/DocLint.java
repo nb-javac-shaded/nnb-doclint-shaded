@@ -35,35 +35,35 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import javax.lang.model.element.Name;
-import javax.lang.model.util.Elements;
-import javax.lang.model.util.Types;
-import javax.tools.StandardLocation;
+import shaded.javax.lang.model.element.Name;
+import shaded.javax.lang.model.util.Elements;
+import shaded.javax.lang.model.util.Types;
+import shaded.javax.tools.StandardLocation;
 
-import com.sun.source.doctree.DocCommentTree;
-import com.sun.source.tree.BlockTree;
-import com.sun.source.tree.ClassTree;
-import com.sun.source.tree.CompilationUnitTree;
-import com.sun.source.tree.LambdaExpressionTree;
-import com.sun.source.tree.ModuleTree;
-import com.sun.source.tree.PackageTree;
-import com.sun.source.tree.MethodTree;
-import com.sun.source.tree.Tree;
-import com.sun.source.tree.VariableTree;
-import com.sun.source.util.DocTrees;
-import com.sun.source.util.JavacTask;
-import com.sun.source.util.TaskEvent;
-import com.sun.source.util.TaskListener;
-import com.sun.source.util.TreePath;
-import com.sun.source.util.TreePathScanner;
-import com.sun.tools.javac.api.JavacTaskImpl;
-import com.sun.tools.javac.api.JavacTool;
-import com.sun.tools.javac.file.JavacFileManager;
-import com.sun.tools.javac.main.JavaCompiler;
-import com.sun.tools.javac.util.Context;
-import com.sun.tools.javac.util.DefinedBy;
-import com.sun.tools.javac.util.DefinedBy.Api;
-import com.sun.tools.javac.util.StringUtils.DamerauLevenshteinDistance;
+import shaded.com.sun.source.doctree.DocCommentTree;
+import shaded.com.sun.source.tree.BlockTree;
+import shaded.com.sun.source.tree.ClassTree;
+import shaded.com.sun.source.tree.CompilationUnitTree;
+import shaded.com.sun.source.tree.LambdaExpressionTree;
+import shaded.com.sun.source.tree.ModuleTree;
+import shaded.com.sun.source.tree.PackageTree;
+import shaded.com.sun.source.tree.MethodTree;
+import shaded.com.sun.source.tree.Tree;
+import shaded.com.sun.source.tree.VariableTree;
+import shaded.com.sun.source.util.DocTrees;
+import shaded.com.sun.source.util.JavacTask;
+import shaded.com.sun.source.util.TaskEvent;
+import shaded.com.sun.source.util.TaskListener;
+import shaded.com.sun.source.util.TreePath;
+import shaded.com.sun.source.util.TreePathScanner;
+import shaded.com.sun.tools.javac.api.JavacTaskImpl;
+import shaded.com.sun.tools.javac.api.JavacTool;
+import shaded.com.sun.tools.javac.file.JavacFileManager;
+import shaded.com.sun.tools.javac.main.JavaCompiler;
+import shaded.com.sun.tools.javac.util.Context;
+import shaded.com.sun.tools.javac.util.DefinedBy;
+import shaded.com.sun.tools.javac.util.DefinedBy.Api;
+import shaded.com.sun.tools.javac.util.StringUtils.DamerauLevenshteinDistance;
 import shaded.jdk.javadoc.internal.tool.AccessLevel;
 
 /**
@@ -76,7 +76,7 @@ import shaded.jdk.javadoc.internal.tool.AccessLevel;
  * <li>Directly, via a simple API
  * </ul>
  */
-public class DocLint extends com.sun.tools.doclint.DocLint {
+public class DocLint extends shaded.com.sun.tools.doclint.DocLint {
 
     public static final String XMSGS_OPTION = "-Xmsgs";
     public static final String XMSGS_CUSTOM_PREFIX = "-Xmsgs:";

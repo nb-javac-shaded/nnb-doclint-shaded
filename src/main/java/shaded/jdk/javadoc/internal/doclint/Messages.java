@@ -37,12 +37,12 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import javax.tools.Diagnostic;
+import shaded.javax.tools.Diagnostic;
 
-import com.sun.source.doctree.DocTree;
-import com.sun.source.tree.Tree;
-import com.sun.tools.javac.api.JavacTrees;
-import com.sun.tools.javac.util.StringUtils;
+import shaded.com.sun.source.doctree.DocTree;
+import shaded.com.sun.source.tree.Tree;
+import shaded.com.sun.tools.javac.api.JavacTrees;
+import shaded.com.sun.tools.javac.util.StringUtils;
 import shaded.jdk.javadoc.internal.tool.AccessLevel;
 
 /**
